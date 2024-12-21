@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 # Home page - Requires login
+def landing(request):
+    return render (request,'registration/landing.html')
 @login_required
 def homePage(request):
     return render(request, 'notes_upload/templates/notes_upload/home.html')

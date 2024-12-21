@@ -19,7 +19,8 @@ from django.urls import path , include
 from . import views
 
 urlpatterns = [
-    path('', views.SignupPage, name='signup'),
+    path('', views.landing, name='landing'),
+    path('register/', views.SignupPage, name='signup'),
     path('login/', views.LoginPage, name='login'),
     # path('home/', include('note_upload.urls')),
     path('home/', views.homePage, name='home'),

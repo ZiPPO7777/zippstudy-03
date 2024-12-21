@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> {% endcomment %}
+  <link rel="stylesheet" href="{% static "notes/landing1.css" %}">
+  <title>Navbar with Caret Animation</title>
+  <link rel="stylesheet" href="landing1.css">
+</head>
+<body>
+    <header>
+         <nav class="navbar">
+    <div class="logo">
+      <a href="#">ZiPPSTUDY</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn" tabindex="0">
+          Leaderboard 
+          <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#">Top Scorers</a>
+          <a href="#">Weekly Rankings</a>
+          <a href="#">College Rank</a>
+          <a href="#">University Rank</a>
+          <a href="#">State Rank</a>
+        </div>
+      </li>
+    </ul>
+    <div class="start">
+      <button class="btn2" type="button" onclick="window.location.href='{% url 'signup' %}'">Sign Up</button>
+      <button class="btn1" type="button" onclick="window.location.href='{% url 'login' %}'">Log In</button>
+  </div>
+    <!-- <div class="search-container">
+      <input type="text" placeholder="Search..." class="search-input">
+      <button class="search-btn">Search</button>
+    </div> -->
+  </nav>
+  <div class="search-main">
+    <form action="">
+       <div class="search-container">
+    <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+   <input class="search-inp" type="search" placeholder="Search">
+  </div> 
+    </form>
+    
+  </div>
+  
+
+  <div class="container">
+    <div class="content">
+         <h1>This is the heading of ZiPPSTUDY</h1>
+         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus eaque exercitationem autem magnam velit iure ad voluptas placeat ullam. Magni, ut quibusdam? Veritatis autem eveniet ullam temporibus esse sed? Tempore?</p>
+    </div>
+    <button class="get-started" type="button" onclick="window.location.href='{% url 'signup' %}'">Get Started</button>
+   
+  </div>
+  
+    </header>
+ <main>
+        <div class="right-box">
+            <div class="right">
+          <h1>Introduce</h1>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa totam voluptate nemo, voluptas natus minus optio dicta sequi dolorem nulla non. Magni minus ullam, eius quia consequuntur, ducimus ab nihil quas exercitationem qui placeat saepe! Eos sed blanditiis a doloribus eum ut nemo perferendis, ad assumenda quis sint adipisci quod quos dolores ea nesciunt omnis quidem? Eveniet fugiat maiores qui, quae atque ab ad, iusto saepe quia laborum consequatur voluptatibus rerum quaerat! Assumenda doloribus molestiae, inventore voluptas totam labore tempora fugit laborum ratione cupiditate impedit, provident sit autem aut delectus.</p>
+        </div>
+        </div>
+        
+        <div class="left-box">
+            <div class="left">
+            left
+        </div> 
+        </div>
+  </main>
+  <script>
+    const dropdownBtn = document.querySelector('.dropbtn');
+const dropdownMenu = document.querySelector('.dropdown-menu');
+const caret = document.querySelector('.caret');
+
+// Toggle dropdown menu and caret on click
+dropdownBtn.addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent default link behavior
+  dropdownMenu.classList.toggle('show');
+  caret.classList.toggle('open'); // Toggle caret animation
+});
+
+// Close dropdown when clicking outside
+window.addEventListener('click', (e) => {
+  if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+    dropdownMenu.classList.remove('show');
+    caret.classList.remove('open');
+  }
+});
+
+// Open dropdown on Enter key
+dropdownBtn.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    dropdownMenu.classList.toggle('show');
+    caret.classList.toggle('open');
+  }
+});
+  </script>
+</body>
+</html>
