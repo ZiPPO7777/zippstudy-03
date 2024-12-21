@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Rank</title>
+    <style> 
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'poppins',sans-serif;
+}
+
+.login-form{
+    position: relative;
+    min-height: 100vh;
+    z-index: 0;
+    background: hsla(252, 100%, 52%, 0.838);
+    padding: 30px;
+    justify-content: center;
+    display: grid;
+    font-family: 'poppins',sans-serif;
+
+    grid-template-rows: 1fr auto 1fr;
+    align-items: center;
+}
+.container{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.form-img h1{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    color: #0f3bff;
+    font-family: 'poppins',sans-serif;
+
+}
+.login-form h2{
+    line-height: 40px;
+    margin-bottom: 5px;
+    font-size: 30px;
+    font-weight: 500;
+    color: #272346;
+    text-align: center;
+}
+.login-form .main{
+    position: relative;
+    display: flex;
+    margin: 30px 0;
+}
+.content{
+    flex-basis: 50%;
+    padding: 3em 3em;
+    background: #fff;
+    box-shadow: 2px 9px 49px -17px rgba(0,0,0,0.1);
+    /* border-top-left-radius: 8px; */
+    /* border-bottom-left-radius: 8px; */
+}
+
+.form-img{
+    flex-basis: 50%;
+    background: #dfe5ea;
+    background-size: cover;
+    padding:40px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    align-items: center;
+    display: grid;
+}
+.form-img img{
+    max-width: 100%;
+}
+p{
+    color: #666;
+    font-size: 16px;
+    line-height: 25px;
+    opacity: 0.6;
+    text-align: center;
+}
+.btn,input{
+    border-radius: 35px;
+}
+
+.verified-container{
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.verified-container input {
+    width: 300px;
+    margin: 0 20px;
+}
+
+.verified {
+    padding: 0;
+    font-size: 12px;
+    border-radius: 20px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.btn {
+    margin-top: 30px;
+}
+.btn:hover,
+button:hover{
+  color: #272346;
+    transition: 0.5s ease;
+}
+a{
+    text-decoration: none;
+}
+.login-form form{
+    margin: 30px 0;
+}
+.login-form input{
+    outline: none;
+    margin-bottom: 20px;
+    font-stretch: 16px;
+    color: #999;
+    text-align: left;
+    padding: 14px 20px;
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    background: #f7fafc;
+    transition: 0.3s ease;
+}
+.login-form input:focus{
+    background: transparent;
+    border: 1px solid #4622d5;
+}
+
+.login-form button{
+    font-size: 18px;
+    color: #fff;
+    width: 100%;
+    background: #4617ff;
+    border: none;
+    padding: 14px 15px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+p.account a{
+    color: #4e34b6;
+}
+p.account a:hover{
+ text-decoration: underline;
+}
+@media(max-width:736px){
+    .login-form .main{
+        flex-direction: column;
+    }
+    .login-form form{
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+    .form-img{
+        border-radius: 0;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        order: 2;
+    }
+    .content{
+        order: 1;
+        border-radius: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+}
+    </style>
+
+</head>
+<body>
+    
+    <div class="login-form">
+        <div class="container">
+            <div class="main">
+                <div class="content">
+                    <h2>Welcome to ClassRank</h2>
+                    
+                    {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li style="color: red;">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        
+                        <!-- User Registration Fields -->
+                        <input type="text" name="username" placeholder="Enter Your Name" required autofocus="">
+                        <input type="email" name="email" placeholder="Enter Your Email" required autofocus="">
+                        <input type="password" name="password1" placeholder="Create Password" required autofocus="">
+                        <input type="password" name="password2" placeholder="Confirm Password" required autofocus="">
+                        
+                        <!-- Verification Code Section -->
+                        <div class="verified-container" style="display: none;">
+                            <input type="number" name="nmbr" placeholder="Enter Verification Code">
+                            <button class="verified" type="submit">Verify</button>
+                        </div>
+                    
+                        <!-- Submit Button -->
+                        <button class="btn" type="submit">
+                            SIGN UP
+                        </button>
+                    </form>
+                    <p class="account">Forget Password? <a href="#">Forgot</a></p>
+                    <p class="account">I already have an account <a href="{% url 'login' %}">Login</a></p>
+
+
+                     
+                </div>
+                <div class="form-img">
+                    <h1>ClassRank</h1>
+                    <!-- <img src="bg 2.png" alt=""> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

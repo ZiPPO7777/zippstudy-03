@@ -1,0 +1,20 @@
+
+{% extends 'notes_upload/base.html' %}
+{% block content %}
+<form method="get">
+    <input type="text" name="q" placeholder="Search notes..." value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+{% csrf_token %}
+<ul>
+    {% for note in notes %}
+    <li>
+        <h2>{{ note.title }}</h2>
+        <p>{{ note.description }}</p>
+        <a href="{{ note.file.url }}" download>Download</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% csrf_token %}
